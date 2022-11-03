@@ -57,26 +57,26 @@ const data={
         price:54
        },
        {
-          image:"https://amazingeventsapi.herokuapp.com/api/img/Fiestadedisfraces1.jpg",
-          name:"Halloween Night",
-          date:"2022-02-12",
-          description:"Come with your scariest costume and win incredible prizes.",
-          category:"Costume Party",
-          place:"Room C",
-          capacity:12000,
-          estimate:9000,
-          price:12
+        image:"https://amazingeventsapi.herokuapp.com/api/img/Fiestadedisfraces1.jpg",
+        name:"Halloween Night",
+        date:"2022-02-12",
+        description:"Come with your scariest costume and win incredible prizes.",
+        category:"Costume Party",
+        place:"Room C",
+        capacity:12000,
+        estimate:9000,
+        price:12
       },
       {
-          image:"https://amazingeventsapi.herokuapp.com/api/img/Conciertodemusica1.jpg",
-          name:"Metallica in concert",
-          date:"2022-01-22",
-          description:"The only concert of the most emblematic band in the world.",
-          category:"Music Concert",
-          place:"Room A",
-          capacity:138000,
-          estimate:138000,
-          price:150
+        image:"https://amazingeventsapi.herokuapp.com/api/img/Conciertodemusica1.jpg",
+        name:"Metallica in concert",
+        date:"2022-01-22",
+        description:"The only concert of the most emblematic band in the world.",
+        category:"Music Concert",
+        place:"Room A",
+        capacity:138000,
+        estimate:138000,
+        price:150
       },
       {
         image:"https://amazingeventsapi.herokuapp.com/api/img/Conciertodemusica2.jpg",
@@ -90,15 +90,15 @@ const data={
         price:250
         },
       {
-          image:"https://amazingeventsapi.herokuapp.com/api/img/Maraton3.jpg",
-          name:"10K for life",
-          date:"2021-03-01",
-          description:"Come and exercise, improve your health and lifestyle.",
-          category:"Race",
-          place:"Campo de FutbÃ³l",
-          capacity:30000,
-          assistance:25698,
-          price:3
+        image:"https://amazingeventsapi.herokuapp.com/api/img/Maraton3.jpg",
+        name:"10K for life",
+        date:"2021-03-01",
+        description:"Come and exercise, improve your health and lifestyle.",
+        category:"Race",
+        place:"Campo de FutbÃ³l",
+        capacity:30000,
+        assistance:25698,
+        price:3
       },
       {
         image:"https://amazingeventsapi.herokuapp.com/api/img/Maraton1.jpg",
@@ -112,15 +112,15 @@ const data={
         price:3
         },
       {
-          imagn:"https://amazingeventsapi.herokuapp.com/api/img/Libros7.jpg",
-          name:"School's book fair",
-          date:"2022-10-15",
-          description:"Bring your unused school book and take the one you need.",
-          category:"Book Exchange",
-          place:"Room D1",
-          capacity:150000,
-          estimate:123286,
-          price:1
+        imagn:"https://amazingeventsapi.herokuapp.com/api/img/Libros7.jpg",
+        name:"School's book fair",
+        date:"2022-10-15",
+        description:"Bring your unused school book and take the one you need.",
+        category:"Book Exchange",
+        place:"Room D1",
+        capacity:150000,
+        estimate:123286,
+        price:1
       },
       {
         image:"https://amazingeventsapi.herokuapp.com/api/img/Libros3.jpg",
@@ -145,16 +145,59 @@ const data={
         price:225
       },
       {
-          image:"https://amazingeventsapi.herokuapp.com/api/img/Cine7.jpg",
-          name:"Avengers",
-          date:"2022-10-15",
-          description:"Marvel's Avengers Premier in 3d, the start of an epic saga with your favourite superheroes.",
-          category:"Cinema",
-          place:"Room D1",
-          capacity:9000,
-          estimate:9000,
-          price:250
+        image:"https://amazingeventsapi.herokuapp.com/api/img/Cine7.jpg",
+        name:"Avengers",
+        date:"2022-10-15",
+        description:"Marvel's Avengers Premier in 3d, the start of an epic saga with your favourite superheroes.",
+        category:"Cinema",
+        place:"Room D1",
+        capacity:9000,
+        estimate:9000,
+        price:250
       }
     ]
   }
   
+
+//          <div class="card" style="width: 15rem">
+//               <img
+//                 src="./assent/image/cine7.jpg"
+//                 class="card-img-top"
+//                 alt="..."/>
+//               <div class="card-body">
+//                 <h5 class="card-title">Cine</h5>
+//                 <p class="card-text">
+//                   Some quick example text to build on the card title and make up
+//                   the bulk of the card's content.
+//                 </p>
+//                 <div
+//                   class="card-price d-flex justify-content-between align-items-center">
+//                   <p class="m-0">Price $00,00</p>
+//                   <a href="#" class="btn btn-dark btn-shadow">Saber más</a>
+//                 </div>
+//               </div>
+//             </div>
+
+
+const cardsFill = () =>{
+    let cards = ``; 
+    const cardSelect = document.getElementById("card");
+    for (let i = 0; i < data.eventos.length; i++){
+        cards += `
+            <div class="card" style="width: 15rem"></div>
+                <img src="${data.eventos[i].image}" class="card-img-top"alt="..."/>
+                <div class="card-body">
+                    <h5 class="card-title">${data.eventos[i].name}</h5>
+                    <p class="card-text">${data.eventos[i].description}</p>
+                    <divclass="card-price d-flex justify-content-between align-items-center">
+                        <p class="m-0">$${data.eventos[i].price}</p>
+                        <a href="#" class="btn btn-dark btn-shadow">Saber más</a>
+                    </div>
+                </div>
+            </div>
+            `
+    }
+    cardSelect.innerHTML = cards;
+}
+
+cardsFill();

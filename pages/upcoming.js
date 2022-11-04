@@ -159,32 +159,49 @@ const data={
   }
   
 
-const cardsFill = () =>{
-    let cards = ``; 
-    const cardSelect = document.getElementById("card");
-    for (let i = 0; i < data.eventos.length; i++){
-        cards += `
-        <div class="d-flex justify-content-between">
-          <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 mb-5">
-            <div class="card" style="width: 15rem">
-              <img src="${data.eventos[i].image}" class="card-img-top"alt="..."/>
-                <div class="card-body">
-                    <h5 class="card-title">${data.eventos[i].name}</h5>
-                    <p class="card-text">${data.eventos[i].description}</p>
-                    <div class="card-price d-flex justify-content-between align-items-center">
-                        <p class="m-0">$${data.eventos[i].price}</p>
-                        <a href="#" class="btn btn-dark btn-shadow">Know more</a>
-                    </div>
+// COMPARAR FECHAS 
+
+const dateSplit = data.fechaActual.split("-");
+const dateToCompareParsed = new Date(
+  dateSplit[0],
+  dateSplit[1] - 1,
+  dateSplit[2]
+);
+const dateTimeStamp = dateToCompareParsed.getTime();
+console.log("dateTimeStamp", dateTimeStamp)
+
+function cardsFill(){
+  let cards = ``;
+  const cardSelect = document.getElementById("card");
+  for (let i = 0; i < data.eventos.length; i++){
+    let dataEventsCompare = data.eventos[i].date;
+    let dataEventsSplit = dataEventsCompare.split("-");
+    let dataEventsParsed = new Date(
+      dataEventsSplit[0],
+      dataEventsSplit[1]-1,
+      dataEventsSplit[2]
+      );
+    let dataEventsTimeStamp = dataEventsParsed.getTime();
+    if (dateTimeStamp < dataEventsTimeStamp){
+      cards += `
+              <div class="d-flex justify-content-between">
+                <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 mb-5">
+                  <div class="card" style="width: 15rem">
+                    <img src="${data.eventos[i].image}" class="card-img-top"alt="..."/>
+                  <div class="card-body">
+                          <h5 class="card-title">${data.eventos[i].name}</h5>
+                          <p class="card-text">${data.eventos[i].description}</p>
+                          <div class="card-price d-flex justify-content-between align-items-center">
+                              <p class="m-0">$${data.eventos[i].price}</p>
+                              <a href="#" class="btn btn-dark btn-shadow">Know more</a>
+                          </div>
+                      </div>
+                  </div>
                 </div>
-            </div>
-          </div>
-      </div> 
-            `
+              </div> 
+      `
     }
     cardSelect.innerHTML = cards;
+  }
 }
-
-cardsFill();
-
-//  
-
+cardsFill()
